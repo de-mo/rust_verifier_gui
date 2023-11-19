@@ -1,0 +1,26 @@
+[package]
+name = "rust_verifier_gui"
+description = "GUI application to verify the Swiss Post E-Voting."
+authors = ["Denis Morel"]
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.74"
+license = "Apache-2.0"
+repository = "https://github.com/de-mo/rust_verifier"
+
+[build-dependencies]
+tauri-build = { version = "1", features = [] }
+
+[dependencies]
+rust_verifier = {git = "https://github.com/de-mo/rust_verifier.git"}
+tauri = { version = "1", features = ["dialog", "shell-open"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1"
+lazy_static = "1.4"
+log = "0.4"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]
